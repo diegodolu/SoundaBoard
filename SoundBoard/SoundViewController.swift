@@ -14,10 +14,14 @@ class SoundViewController: UIViewController {
     @IBOutlet weak var reproducirButton: UIButton!
     @IBOutlet weak var nombreTextField: UITextField!
     @IBOutlet weak var agregarButton: UIButton!
+    @IBOutlet weak var labelTime: UILabel!
     
+    var timer: Timer?
+    var recordingTime: Int = 0
     var grabarAudio:AVAudioRecorder?
     var reproducirAudio:AVAudioPlayer?
     var audioURL:URL?
+    
     
     @IBAction func grabarTapped(_ sender: Any) {
         if grabarAudio!.isRecording{
@@ -27,13 +31,27 @@ class SoundViewController: UIViewController {
             grabarButton.setTitle("GRABAR", for: .normal)
             reproducirButton.isEnabled = true
             agregarButton.isEnabled = true
+            
+            timer?.invalidate()
+            timer = nil
         } else {
             // empezar a grabar
             grabarAudio?.record()
             // cambiar el texto del boton grabar a detener
             grabarButton.setTitle("DETENER", for: .normal)
             reproducirButton.isEnabled = false
+            
+            recordingTime = 0
+            labelTime.text = "00:00"
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateRecordingTime), userInfo: nil, repeats: true)
         }
+    }
+    
+    @objc func updateRecordingTime() {
+        recordingTime += 1
+        let minutes = recordingTime / 60
+        let seconds = recordingTime % 60
+        labelTime.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
     @IBAction func reproducirTapped(_ sender: Any) {
@@ -50,6 +68,14 @@ class SoundViewController: UIViewController {
         let grabacion = Grabacion(context: context)
         grabacion.nombre = nombreTextField.text
         grabacion.audio = NSData(contentsOf: audioURL!)! as Data
+
+        do {
+            let audioPlayer = try AVAudioPlayer(contentsOf: audioURL!)
+            grabacion.duracion = audioPlayer.duration
+        } catch {
+            print("Error al obtener la duración del audio.")
+        }
+        
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
     }
@@ -92,6 +118,8 @@ class SoundViewController: UIViewController {
         configurarGrabacion()
         reproducirButton.isEnabled = false
         agregarButton.isEnabled = false
+        
+        labelTime.text = "00:00"
 
         // Do any additional setup after loading the view.
     }
