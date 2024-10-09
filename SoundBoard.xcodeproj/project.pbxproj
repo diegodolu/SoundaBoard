@@ -14,6 +14,7 @@
 		FE86C1D62CB71E8E0059F60B /* SoundBoard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE86C1D42CB71E8E0059F60B /* SoundBoard.xcdatamodeld */; };
 		FE86C1D82CB71E900059F60B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE86C1D72CB71E900059F60B /* Assets.xcassets */; };
 		FE86C1DB2CB71E900059F60B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE86C1D92CB71E900059F60B /* LaunchScreen.storyboard */; };
+		FE86C1E52CB7280C0059F60B /* SoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE86C1E42CB7280C0059F60B /* SoundViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FE86C1D72CB71E900059F60B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE86C1DA2CB71E900059F60B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE86C1DC2CB71E900059F60B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE86C1E42CB7280C0059F60B /* SoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				FE86C1D92CB71E900059F60B /* LaunchScreen.storyboard */,
 				FE86C1DC2CB71E900059F60B /* Info.plist */,
 				FE86C1D42CB71E8E0059F60B /* SoundBoard.xcdatamodeld */,
+				FE86C1E42CB7280C0059F60B /* SoundViewController.swift */,
 			);
 			path = SoundBoard;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				FE86C1D02CB71E8E0059F60B /* ViewController.swift in Sources */,
 				FE86C1CC2CB71E8E0059F60B /* AppDelegate.swift in Sources */,
 				FE86C1CE2CB71E8E0059F60B /* SceneDelegate.swift in Sources */,
+				FE86C1E52CB7280C0059F60B /* SoundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
